@@ -69,7 +69,6 @@ class window(QtWidgets.QDialog):
 
     def stopwatch_trt(self):
         self.text_trt = str(datetime.timedelta(milliseconds=self.mscounter_trt))[:-7]
-        print(self.text_trt)
         self.ui.lcdNumber_trt.setDigitCount(9)
         if not self.isreset_trt:
             self.ui.lcdNumber_trt.display(self.text_trt)
@@ -83,7 +82,6 @@ class window(QtWidgets.QDialog):
         self.ui.stop_twt.setDisabled(True)
         self.ui.start_twt.setDisabled(False)
         self.ui.stop_trt.setDisabled(False)
-
 
     def stopTrt(self):
         self.timer_trt.stop()
@@ -99,21 +97,16 @@ class window(QtWidgets.QDialog):
         self.ui.stop_trt.setDisabled(True)
         try:
             with open('data.txt', 'a') as f:
-                f.write(str(datetime.date.today()) +  "\n" + "Total working time: " + self.text_twt + "\n" + "Total rest time: " + self.text_trt + "\n\n")
+                f.write(str(datetime.date.today()) + "\n" + self.text_twt +  "\n" +  self.text_trt + "\n\n")
         except FileNotFoundError:
             with open('data.txt', 'w') as f:
-                f.write(str(datetime.date.today()) + "\n" + "Total working time: " + self.text_twt + "\n" + "Total rest time: " + self.text_trt + "\n\n")
-        try:
-            with open('datagraph.txt', 'a') as f:
-                f.write(self.text_twt + "\n" +  self.text_trt + "\n\n")
-        except FileNotFoundError:
-            with open('datagraph.txt', 'w') as f:
-                f.write(self.text_twt + "\n" + self.text_trt + "\n\n")
-        self.ui.savedata.setDisabled(True)
+                f.write(str(datetime.date.today()) + "\n" + self.text_twt +  "\n" +  self.text_trt + "\n\n")
 
     def show_graphs(self):
         with open ("data.txt", 'r') as f:
-            print()
+            for time in f.readlines():
+                print(time, end='')
+
 
 
 
