@@ -2,6 +2,7 @@ import datetime
 
 from WorkToRest import Ui_Dialog
 
+
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtWidgets import *
 
@@ -94,73 +95,17 @@ class window(QtWidgets.QDialog):
         self.mscounter_twt = 0
         self.ui.lcdNumber_trt.display('0:00:00')
         self.ui.lcdNumber_twt.display('0:00:00')
+        self.ui.savedata.setDisabled(True)
         self.ui.stop_trt.setDisabled(True)
         try:
-            with open('data.txt', 'a') as f:
+            with open('data.oil', 'a') as f:
                 f.write(str(datetime.date.today()) + "\n" + self.text_twt +  "\n" +  self.text_trt + "\n\n")
         except FileNotFoundError:
-            with open('data.txt', 'w') as f:
+            with open('data.oil', 'w') as f:
                 f.write(str(datetime.date.today()) + "\n" + self.text_twt +  "\n" +  self.text_trt + "\n\n")
 
     def show_graphs(self):
-        import matplotlib as mpl
-        import matplotlib.pyplot as plt
-        import numpy as np
-        import datetime
-
-        import matplotlib.dates
-
-        from datetime import datetime
-
-        x_values = [datetime(2021, 11, 18, 12), datetime(2021, 11, 18, 14), datetime(2021, 11, 18, 16)]
-        y_values = [1.0, 3.0, 2.0]
-
-        dates = matplotlib.dates.date2num(x_values)
-        matplotlib.pyplot.plot_date(dates, y_values)
-
-        def data_to_lists():
-            with open("data.txt", "r") as f:
-                flag_1 = False
-                flag_2 = False
-                flag_3 = False
-                flag_date = False
-                date = []
-                time_twt = []
-                time_trt = []
-                f_list = list(f)
-                for i in range(len(f_list)):
-                    new_list = f_list[i].split("\n")
-                    if flag_1 == True and flag_date == False:
-                        date.append(new_list[0])
-                        flag_date = True
-                    if new_list[0] == "":
-                        flag_1 = True
-                    if i == 2 or (i + 4) % 2 == 0 and new_list[0] != "":
-                        flag_2 = True
-                        time_twt.append(new_list[0])
-                    if flag_1 == True and flag_2 == True and i != 2 and (i + 4) % 2:
-                        flag_3 = True
-                        time_trt.append(new_list[0])
-                    if flag_3 == True:
-                        flag_1 = False
-                        flag_2 = False
-                        flag_3 = False
-                        flag_date = False
-
-                f.close()
-                list_to_digits(date, time_twt, time_trt)
-
-        def list_to_digits(date, time_twt, time_trt):
-            v = str
-            print(date)
-            print(time_twt)
-            print(time_trt)
-            dict = {}
-            for i in range(len(date)):
-                print(dict)
-
-            data_to_lists()
-
+        from plots import main_graph
 
 
 

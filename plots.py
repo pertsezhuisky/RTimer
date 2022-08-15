@@ -1,10 +1,8 @@
-import matplotlib as mpl
 import matplotlib.pyplot as plt
-import numpy as np
 import datetime
 
 def data_to_lists():
-    with open("data.txt", "r") as f:
+    with open("data.oil", "r") as f:
         flag_1 = False
         flag_2 = False
         flag_3 = False
@@ -36,10 +34,6 @@ def data_to_lists():
         list_to_digits(date, time_twt, time_trt)
 
 def list_to_digits(date, time_twt, time_trt):
-    v = str
-    print(date)
-    print(time_twt)
-    print(time_trt)
     show_graphs_week(date, time_twt, time_trt)
 #should do month graphs
 def show_graphs_week(date, time_twt, time_trt):
@@ -102,9 +96,8 @@ def show_graphs_month(xs, ys1, ys2):
     pass
 
 
-def main():
+def main_graph():
     data_to_lists()
 
-if __name__ == '__main__':
-    main()
+main_graph()
 
