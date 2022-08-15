@@ -53,17 +53,20 @@ def show_graphs_week(date, time_twt, time_trt):
     average_twt = 0
     average_trt = 0
     k = 0
-#there is a problem if you type a "" in the file "data.txt". example: invalid literal for int() with base 10: ''. need to fix:D. commited with a problem
+    #bug fixed.
+    date = [i for i in date if i]
     for i in date:
         lst = list(map(int, i.split('-')))
         xs.append(datetime.datetime(lst[0], lst[1], lst[2]))
 
+    time_twt = [i for i in time_twt if i]
     for i in time_twt:
         lst = list(map(int, i.split(':')))
         ys1.append(lst[0] * 60 + lst[1])
         average_twt = average_twt + lst[0] * 60 + lst[1]
         average_twt = average_twt / len(ys1)
 
+    time_trt = [i for i in time_trt if i]   
     for i in time_trt:
         lst = list(map(int, i.split(':')))
         ys2.append(lst[0] * 60 + lst[1])
