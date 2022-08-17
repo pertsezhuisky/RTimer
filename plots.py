@@ -3,6 +3,7 @@ import datetime
 
 def data_to_lists():
     with open("data.oil", "r") as f:
+
         flag_1 = False
         flag_2 = False
         flag_3 = False
@@ -11,6 +12,9 @@ def data_to_lists():
         time_twt = []
         time_trt = []
         f_list = list(f)
+        if len(f_list) == 0:
+            f.write("\n")
+            return
         for i in range(len(f_list)):
             new_list = f_list[i].split("\n")
             if flag_1 == True and flag_date == False:
@@ -66,16 +70,32 @@ def show_graphs_week(date, time_twt, time_trt):
         ys2.append(lst[0] * 60 + lst[1])
         average_trt = average_trt + lst[0] * 60 + lst[1]
         average_trt = average_trt / len(ys2)
+
+    ind = 0
+    while ind <= len(xs) - 2:
+        if xs[ind] == xs[ind + 1]:
+            del xs[ind]
+            ys1[ind + 1] = ys1[ind] + ys1[ind + 1]
+            del ys1[ind]
+
+            ys2[ind + 1] = ys2[ind] + ys2[ind + 1]
+            del ys2[ind]
+        else:
+            ind += 1
 #calculate last 7 days or less days
-    if len(date) >= 7:
-        k = len(date) - 7
-    if len(date) <= 7:
-        k = len(date) - len(date)
-    for i in range(len(date)-1,k-1,-1):
+    if len(xs) >= 7:
+        k = len(xs) - 7
+    if len(xs) <= 7:
+        k = 0
+    for i in range(k, len(xs)):
         xs_week.append(xs[i])
         ys1_week.append(ys1[i])
         ys2_week.append(ys2[i])
-#displaying all stuff
+
+    print(xs_week)
+    print(ys1_week)
+    print(ys2_week)
+
     plt.plot(xs_week, ys1_week, '-og', label = "Total working time")
     for i in range(len(xs_week)):
         plt.text(xs_week[i], ys1_week[i]+10, str(ys1_week[i]))
@@ -100,4 +120,3 @@ def main_graph():
     data_to_lists()
 
 main_graph()
-
