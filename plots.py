@@ -1,9 +1,13 @@
 import matplotlib.pyplot as plt
 import datetime
+from os.path import exists
 
 def data_to_lists():
-    with open("data.oil", "r") as f:
-
+    if not(exists("data.oil")):
+        fl = open("data.oil", 'w')
+        fl.write("\n")
+        fl.close()
+    with open("data.oil", 'r') as f:
         flag_1 = False
         flag_2 = False
         flag_3 = False
@@ -12,9 +16,6 @@ def data_to_lists():
         time_twt = []
         time_trt = []
         f_list = list(f)
-        if len(f_list) == 0:
-            f.write("\n")
-            return
         for i in range(len(f_list)):
             new_list = f_list[i].split("\n")
             if flag_1 == True and flag_date == False:
@@ -77,7 +78,7 @@ def show_graphs_week(date, time_twt, time_trt):
         ys1.append(0)
 
     ind = 0
-    while ind <= len(xs) - 2:
+    while (len(xs) > 1) and (ind <= len(xs) - 2):
         if xs[ind] == xs[ind + 1]:
             del xs[ind]
             ys1[ind + 1] = ys1[ind] + ys1[ind + 1]

@@ -1,8 +1,7 @@
 import datetime
+from os.path import exists
 
 from WorkToRest import Ui_Dialog
-
-
 from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtWidgets import *
 
@@ -12,6 +11,9 @@ class window(QtWidgets.QDialog):
         super(window, self).__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+
+        self.text_trt = ''
+        self.text_twt = ''
 
         self.timer_twt = QtCore.QTimer(self)
         self.timer_twt.timeout.connect(self.run_watch_twt)
@@ -89,6 +91,8 @@ class window(QtWidgets.QDialog):
         self.ui.stop_trt.setDisabled(True)
 
     def savedata(self):
+        if self.text_trt == '' and self.text_twt == '':
+            return
         self.timer_twt.stop()
         self.timer_trt.stop()
         self.mscounter_trt = 0
@@ -97,12 +101,26 @@ class window(QtWidgets.QDialog):
         self.ui.lcdNumber_twt.display('0:00:00')
         self.ui.savedata.setDisabled(True)
         self.ui.stop_trt.setDisabled(True)
-        try:
+        if exists('data.oil'):
             with open('data.oil', 'a') as f:
-                f.write(str(datetime.date.today()) + "\n" + self.text_twt +  "\n" +  self.text_trt + "\n\n")
-        except FileNotFoundError:
+                if self.text_trt == '':
+                    f.write(str(datetime.date.today()) + "\n" + self.text_twt +  "\n" +  '0:00:00' + "\n\n")
+                elif self.text_twt == '':
+                    f.write(str(datetime.date.today()) + "\n" + '0:00:00' + "\n" + self.text_trt + "\n\n")
+                else:
+                    f.write(str(datetime.date.today()) + "\n" + self.text_twt + "\n" + self.text_trt + "\n\n")
+        else:
             with open('data.oil', 'w') as f:
-                f.write(str(datetime.date.today()) + "\n" + self.text_twt +  "\n" +  self.text_trt + "\n\n")
+                f.write('\n')
+                if self.text_trt == '':
+                    f.write(str(datetime.date.today()) + "\n" + self.text_twt +  "\n" +  '0:00:00' + "\n\n")
+                elif self.text_twt == '':
+                    f.write(str(datetime.date.today()) + "\n" + '0:00:00' + "\n" + self.text_trt + "\n\n")
+                else:
+                    f.write(str(datetime.date.today()) + "\n" + self.text_twt + "\n" + self.text_trt + "\n\n")
+
+        self.text_trt = ''
+        self.text_twt = ''
 
     def show_graphs(self):
         from plots import main_graph
