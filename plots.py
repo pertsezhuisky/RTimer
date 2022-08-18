@@ -71,6 +71,11 @@ def show_graphs_week(date, time_twt, time_trt):
         average_trt = average_trt + lst[0] * 60 + lst[1]
         average_trt = average_trt / len(ys2)
 
+    while len(ys1) > len(ys2):
+        ys2.append(0)
+    while len(ys1) < len(ys2) :
+        ys1.append(0)
+
     ind = 0
     while ind <= len(xs) - 2:
         if xs[ind] == xs[ind + 1]:
