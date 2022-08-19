@@ -67,9 +67,8 @@ class Ui_Dialog(object):
         self.stop_trt.setObjectName("stop_trt")
         self.show_graph = QtWidgets.QPushButton(Dialog)
         self.show_graph.setObjectName("show_graph")
-        self.show_graph.setGeometry(QtCore.QRect(230, 235, 75, 23))
+        self.show_graph.setGeometry(QtCore.QRect(222, 235, 91, 23))
         self.verticalLayout.addWidget(self.stop_trt)
-
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
