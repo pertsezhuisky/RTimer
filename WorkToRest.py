@@ -1,9 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtWidgets import *
 from PyQt5 import QtCore, QtGui
 
-class Ui_Dialog(object):
+
+class UiDialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(532, 321)
@@ -72,7 +72,6 @@ class Ui_Dialog(object):
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Your productivity"))
@@ -85,10 +84,11 @@ class Ui_Dialog(object):
         self.start_trt.setText(_translate("Dialog", "Start"))
         self.stop_trt.setText(_translate("Dialog", "Stop"))
 
+
 if __name__ == "__main__":
     app = QApplication([])
     apl = QtWidgets.QMainWindow()
-    ui = Ui_Dialog()
+    ui = UiDialog()
     ui.setupUi(apl)
     apl.show()
     app.exec()
