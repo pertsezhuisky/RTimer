@@ -11,7 +11,5 @@ Project include this files:
 4. WorkToRest.py - file consists main design of project. There is size of buttons, position of timers, colors of the background e.c.
 5. WorkToRest.ui - file of design of RTimer. You can use it to customize appearance.
 
-Detailed review on files
 
-1. main.py
 
