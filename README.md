@@ -11,6 +11,8 @@ Project include this files:
 4. WorkToRest.py - file consists main design of project. There is size of buttons, position of timers, colors of the background e.c.
 5. WorkToRest.ui - file of design of RTimer. You can use it to customize appearance.
 
-![Снимок](https://user-images.githubusercontent.com/111244605/185734255-1f11da84-bffc-48a2-a8f4-36466bde723f.JPG) dfsafasasafa
+After launching main.py you would see this window:
 
+![Снимок222](https://user-images.githubusercontent.com/111244605/185734399-65b3526f-ba9b-4713-9fc2-f6a8090ac7cf.JPG)
 
+You have two couple of buttons under two timers. First couple responds to Total Working Time, the second one for Total Rest Time. If you clicked at the "start" timer begin to raise up. If you clicked at the "stop" timer will stop. Timer can be reloaded after clicking on the "save data". This button responds to save data to 'data.oil' file and also reloads all timers. You can click at "show plots" button that will show you plots made by last 7 and 30 days. 
