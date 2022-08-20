@@ -1,6 +1,6 @@
 #################################
 #     Project: RTimer           #
-#     Author: Roman Kijaev      #
+#     Author: Roman Kizhaev      #
 #     Github: pertsezhuisky     #
 #################################
 
@@ -137,7 +137,7 @@ class window(QtWidgets.QDialog):
                     f.write(str(datetime.date.today()) + "\n" + '0:00:00' + "\n" + self.text_trt + "\n\n")
                 else:
                     f.write(str(datetime.date.today()) + "\n" + self.text_twt + "\n" + self.text_trt + "\n\n")
-        # note about "\n": we need to create "\n\n" (further Enter) for indicating the new block of data.
+        # note about "\n": we need to create "\n\n" for indicating the new block of data.
 
         # reload variables
         self.text_trt = ''
