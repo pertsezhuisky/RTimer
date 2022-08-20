@@ -1,4 +1,4 @@
- What's this code? 
+ What's this code? wddawawd
 RTimer is a complete code that can help you to control your screen-time. GUI was written on PyQT5. Program records your time when you are working and when you are resting and then creating plots for last 7 and 30 days.
  Main concepts
 Project include this files:
