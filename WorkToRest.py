@@ -74,11 +74,11 @@ class UiDialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Your productivity"))
+        Dialog.setWindowTitle(_translate("Dialog", "RTimer"))
         self.label.setText(_translate("Dialog", "Total working time"))
         self.label_2.setText(_translate("Dialog", "Total rest time"))
         self.savedata.setText(_translate("Dialog", "Save data"))
-        self.show_graph.setText(_translate("Dialog", "Show Graphs"))
+        self.show_graph.setText(_translate("Dialog", "Show Plots"))
         self.start_twt.setText(_translate("Dialog", "Start"))
         self.stop_twt.setText(_translate("Dialog", "Stop"))
         self.start_trt.setText(_translate("Dialog", "Start"))
