@@ -52,7 +52,6 @@ def data_to_lists():
         f.close()
         show_graphs_week(date, time_twt, time_trt)
 
-
 def show_graphs_week(date, time_twt, time_trt):
     """ Creating a plot for the previous week """
     plt.style.use("seaborn") # use 'seaborn' style

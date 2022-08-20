@@ -148,7 +148,6 @@ class window(QtWidgets.QDialog):
         from plots import main_graph
         main_graph()
 
-
 app = QApplication([])
 apps = window()
 apps.show()
