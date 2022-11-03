@@ -13,6 +13,13 @@ Project include this files:
 
 After launching main.py you would see this window:
 
-![Снимок222](https://user-images.githubusercontent.com/111244605/185734399-65b3526f-ba9b-4713-9fc2-f6a8090ac7cf.JPG)
+![img.png](img_for_readme.png)
 
-You have two couple of buttons under two timers. First couple responds to Total Working Time, the second one for Total Rest Time. If you clicked at the "start" timer begin to raise up. If you clicked at the "stop" timer will stop. Timer can be reloaded after clicking on the "save data". This button responds to save data to 'data.oil' file and also reloads all timers. You can click at "show plots" button that will show you plots made by last 7 and 30 days. 
+You have two couple of buttons under two timers.
+First couple responds to Total Working Time, the second one for Total Rest Time. 
+If you clicked at the "start" timer begin to raise up. 
+If you clicked at the "stop" timer will stop. 
+Timer can be reloaded after clicking on the "save data". 
+This button responds to save data to 'data.oil' file and also reloads all timers. 
+You can click at "show plots" button that will show you plots made by last 7 and 30 days. 
+Button "Clear data" responds to delete file with your data.

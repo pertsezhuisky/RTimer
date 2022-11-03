@@ -68,6 +68,8 @@ class UiDialog(object):
         self.show_graph = QtWidgets.QPushButton(Dialog)
         self.show_graph.setObjectName("show_graph")
         self.show_graph.setGeometry(QtCore.QRect(222, 235, 91, 23))
+        self.clear_data = QtWidgets.QPushButton(Dialog)
+        self.clear_data.setObjectName("clear_data")
         self.verticalLayout.addWidget(self.stop_trt)
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -83,6 +85,7 @@ class UiDialog(object):
         self.stop_twt.setText(_translate("Dialog", "Stop"))
         self.start_trt.setText(_translate("Dialog", "Start"))
         self.stop_trt.setText(_translate("Dialog", "Stop"))
+        self.clear_data.setText(_translate("Dialog", "Clear data"))
 
 
 if __name__ == "__main__":

@@ -3,8 +3,9 @@
 #     Author: Roman Kizhaev      #
 #     Github: pertsezhuisky     #
 #################################
-
+import os
 import datetime
+
 from os.path import exists
 from WorkToRest import UiDialog
 from PyQt5 import QtCore, QtWidgets
@@ -39,6 +40,7 @@ class window(QtWidgets.QDialog):
         self.ui.stop_trt.clicked.connect(self.stopTrt)
         self.ui.savedata.clicked.connect(self.savedata)
         self.ui.show_graph.clicked.connect(self.show_plots)
+        self.ui.clear_data.clicked.connect(self.cleardata)
         # launching main functions
         self.stopwatch_twt()
         self.stopwatch_trt()
@@ -147,6 +149,11 @@ class window(QtWidgets.QDialog):
         """ making and showing plots """
         from plots import main_graph
         main_graph()
+
+    def cleardata(self):
+        """clear all data from file with your time"""
+        if os.path.exists("data.oil"):
+            os.remove("data.oil")
 
 app = QApplication([])
 apps = window()

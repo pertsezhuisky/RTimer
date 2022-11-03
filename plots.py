@@ -4,7 +4,6 @@
 
 import datetime
 import matplotlib.pyplot as plt
-
 from os.path import exists
 
 
@@ -78,8 +77,9 @@ def show_graphs_week(date, time_twt, time_trt):
         if lst[2] > 0:
             lst[1] = lst[1] + 1
         ys1.append(lst[0] * 60 + lst[1])
-        average_twt = average_twt + lst[0] * 60 + lst[1]
-        average_twt = average_twt / len(ys1)
+        average_twt = average_twt + (lst[0] * 60) + lst[1]
+    average_twt = average_twt / len(ys1)
+
     # converting 'str' time_trt from file to 'int' digit
     time_trt = [i for i in time_trt if i]
     for i in time_trt:
@@ -88,7 +88,7 @@ def show_graphs_week(date, time_twt, time_trt):
             lst[1] = lst[1] + 1
         ys2.append(lst[0] * 60 + lst[1])
         average_trt = average_trt + lst[0] * 60 + lst[1]
-        average_trt = average_trt / len(ys2)
+    average_trt = average_trt / len(ys2)
     # this block writes zeros if there is no data from time_twt or time_trt in the file
     while len(ys1) > len(ys2):
         ys2.append(0)
